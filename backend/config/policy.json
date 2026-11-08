@@ -1,0 +1,18 @@
+{
+  "gst_rate": "0.18",
+  "quote_valid_hours": 24,
+  "document_max_bytes": 6291456,
+  "address_proof_max_days": 90,
+  "price_policy": "catalogue_minimum_demo",
+  "segments": {
+    "prof": {"needs": ["internet", "email", "security"]},
+    "micro": {"needs": ["internet", "pos"]},
+    "multi": {"needs": ["internet"]},
+    "mfg": {"needs": ["internet"]}
+  },
+  "need_products": {
+    "internet": "P01", "backup": "P09", "email": "P16", "security": "P20",
+    "storage": "P17", "messaging": "P15", "sms": "P14", "pos": "P19",
+    "cctv": "P23", "website": "P18", "sim": "P07", "static_ip": "P11"
+  }
+}

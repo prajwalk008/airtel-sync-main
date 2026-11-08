@@ -10,17 +10,37 @@
     "bundle": {
       "name": "Retail Essentials",
       "monthlyPriceInr": 2620,
-      "items": ["Biz Fibre 100", "2 Business SIMs", "WhatsApp Business"]
+      "items": [
+        "Biz Fibre 100",
+        "2 Business SIMs",
+        "WhatsApp Business"
+      ]
     },
     "installation": {
       "address": "Market Yard, Ludhiana, Punjab",
       "expectedActivationDate": "2026-06-01"
     },
     "events": [
-      {"status": "order_confirmed", "occurredAt": "2026-05-24T10:00:00.000Z", "message": "Your order and chosen bundle are confirmed."},
-      {"status": "kyc_verified", "occurredAt": "2026-05-26T09:30:00.000Z", "message": "Your business verification is complete."},
-      {"status": "installation_scheduled", "occurredAt": "2026-05-28T08:00:00.000Z", "message": "An engineer visit has been scheduled."},
-      {"status": "activated", "occurredAt": "2026-05-31T15:00:00.000Z", "message": "Your services are now active."}
+      {
+        "status": "order_confirmed",
+        "occurredAt": "2026-05-24T10:00:00.000Z",
+        "message": "Your order and chosen bundle are confirmed."
+      },
+      {
+        "status": "kyc_verified",
+        "occurredAt": "2026-05-26T09:30:00.000Z",
+        "message": "Your business verification is complete."
+      },
+      {
+        "status": "installation_scheduled",
+        "occurredAt": "2026-05-28T08:00:00.000Z",
+        "message": "An engineer visit has been scheduled."
+      },
+      {
+        "status": "activated",
+        "occurredAt": "2026-05-31T15:00:00.000Z",
+        "message": "Your services are now active."
+      }
     ],
     "createdAt": "2026-05-24T10:00:00.000Z",
     "updatedAt": "2026-05-31T15:00:00.000Z"
@@ -36,16 +56,31 @@
     "bundle": {
       "name": "Professional Office Connect",
       "monthlyPriceInr": 3298,
-      "items": ["Biz Fibre 300", "Cloud Email"]
+      "items": [
+        "Biz Fibre 300",
+        "Cloud Email"
+      ]
     },
     "installation": {
       "address": "Station Road, Kochi, Kerala",
       "expectedActivationDate": "2026-06-16"
     },
     "events": [
-      {"status": "order_confirmed", "occurredAt": "2026-06-10T10:00:00.000Z", "message": "Your order and chosen bundle are confirmed."},
-      {"status": "kyc_verified", "occurredAt": "2026-06-11T09:00:00.000Z", "message": "Your business verification is complete."},
-      {"status": "provisioning", "occurredAt": "2026-06-12T08:00:00.000Z", "message": "We are preparing your connection."}
+      {
+        "status": "order_confirmed",
+        "occurredAt": "2026-06-10T10:00:00.000Z",
+        "message": "Your order and chosen bundle are confirmed."
+      },
+      {
+        "status": "kyc_verified",
+        "occurredAt": "2026-06-11T09:00:00.000Z",
+        "message": "Your business verification is complete."
+      },
+      {
+        "status": "provisioning",
+        "occurredAt": "2026-06-12T08:00:00.000Z",
+        "message": "We are preparing your connection."
+      }
     ],
     "createdAt": "2026-06-10T10:00:00.000Z",
     "updatedAt": "2026-06-12T08:00:00.000Z"
@@ -61,17 +96,99 @@
     "bundle": {
       "name": "Store Connectivity",
       "monthlyPriceInr": 1199,
-      "items": ["Biz Fibre 100"]
+      "items": [
+        "Biz Fibre 100"
+      ]
     },
     "installation": {
       "address": "Civil Lines, Jaipur, Rajasthan",
       "expectedActivationDate": null
     },
     "events": [
-      {"status": "order_confirmed", "occurredAt": "2026-06-18T10:00:00.000Z", "message": "Your order and chosen bundle are confirmed."},
-      {"status": "kyc_action_required", "occurredAt": "2026-06-19T10:00:00.000Z", "message": "The name on your document does not match the order.", "actionRequired": "Upload a corrected business-registration document."}
+      {
+        "status": "order_confirmed",
+        "occurredAt": "2026-06-18T10:00:00.000Z",
+        "message": "Your order and chosen bundle are confirmed."
+      },
+      {
+        "status": "kyc_action_required",
+        "occurredAt": "2026-06-19T10:00:00.000Z",
+        "message": "The name on your document does not match the order.",
+        "actionRequired": "Upload a corrected business-registration document."
+      }
     ],
     "createdAt": "2026-06-18T10:00:00.000Z",
     "updatedAt": "2026-06-19T10:00:00.000Z"
+  },
+  {
+    "id": "ORD-724ad25db5f6487eb04087995db417c7",
+    "customer": {
+      "businessName": "Ganesh Woodcraft",
+      "contactName": "Joseph Singh",
+      "mobile": "919999998002",
+      "preferredLanguage": "English"
+    },
+    "bundle": {
+      "name": "Confirmed business bundle",
+      "monthlyPriceInr": 2500.42,
+      "items": [
+        {
+          "productId": "P01",
+          "name": "Biz Fibre 100",
+          "unit": "per site",
+          "quantity": 1,
+          "unitPrice": 999,
+          "monthlyExTax": 999,
+          "setupExTax": 0,
+          "contractMonths": 12,
+          "installDays": 5
+        },
+        {
+          "productId": "P16",
+          "name": "Cloud Email & Office Suite",
+          "unit": "per user",
+          "quantity": 5,
+          "unitPrice": 125,
+          "monthlyExTax": 625,
+          "setupExTax": 0,
+          "contractMonths": 12,
+          "installDays": 1
+        },
+        {
+          "productId": "P20",
+          "name": "Endpoint Security",
+          "unit": "per device",
+          "quantity": 5,
+          "unitPrice": 99,
+          "monthlyExTax": 495,
+          "setupExTax": 0,
+          "contractMonths": 12,
+          "installDays": 1
+        }
+      ]
+    },
+    "installation": {
+      "address": "Shop/Unit 80, Civil Lines, Nagpur, Maharashtra - 411231",
+      "expectedActivationDate": "2026-07-20"
+    },
+    "events": [
+      {
+        "status": "order_confirmed",
+        "occurredAt": "2026-11-08T13:38:33.964Z",
+        "message": "Your order and chosen bundle are confirmed."
+      },
+      {
+        "id": "TEV-51a2fe25f2644e0aa26d963118c8a3b8",
+        "status": "kyc_verified",
+        "occurredAt": "2026-11-08T13:38:33.975Z"
+      },
+      {
+        "id": "TEV-e294d4e690a6472aa174f2040e156e41",
+        "status": "provisioning",
+        "occurredAt": "2026-11-08T13:38:33.981Z"
+      }
+    ],
+    "createdAt": "2026-11-08T13:38:33.964Z",
+    "updatedAt": "2026-11-08T13:38:33.981Z"
   }
 ]

@@ -4,3 +4,11 @@ dist/
 *.tsbuildinfo
 .tmp_case_pages/
 ui-samples/
+whatsapp/.env
+whatsapp/.runtime/
+backend/.venv/
+backend/.runtime/
+backend/.env
+mobile/.env
+__pycache__/
+.pytest_cache/

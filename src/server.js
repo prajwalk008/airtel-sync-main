@@ -1,6 +1,6 @@
 import { createServer } from 'node:http';
 import { randomUUID } from 'node:crypto';
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile, writeFile, rename } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -79,7 +79,8 @@ async function loadOrders(ordersFile = dataFile) {
 }
 
 async function saveOrders(orders, ordersFile = dataFile) {
-  await writeFile(ordersFile, `${JSON.stringify(orders, null, 2)}\n`, 'utf8');
+  await writeFile(`${ordersFile}.tmp`, `${JSON.stringify(orders, null, 2)}\n`, 'utf8');
+  await rename(`${ordersFile}.tmp`, ordersFile);
 }
 
 function currentEvent(order) {
@@ -128,14 +129,20 @@ function isInternalRequest(request) {
   return !expectedKey || request.headers['x-tracker-api-key'] === expectedKey;
 }
 
-export function createTrackerServer({ ordersFile = dataFile } = {}) {
-  return createServer(async (request, response) => {
+export function createTrackerServer({ ordersFile = dataFile, apiKey = process.env.TRACKER_API_KEY } = {}) {
+  let pending = Promise.resolve();
+  return createServer((request, response) => {
+    const task = pending.then(async () => {
     try {
       const url = new URL(request.url, `http://${request.headers.host || 'localhost'}`);
       const parts = url.pathname.split('/').filter(Boolean);
 
       if (request.method === 'GET' && url.pathname === '/health') {
         return sendJson(response, 200, { status: 'ok' });
+      }
+
+      if (apiKey && request.headers['x-tracker-api-key'] !== apiKey) {
+        return sendJson(response, 401, { error: 'Invalid tracker API key.' });
       }
 
       if (request.method === 'GET' && url.pathname === '/v1/orders') {
@@ -160,10 +167,18 @@ export function createTrackerServer({ ordersFile = dataFile } = {}) {
         if (request.method === 'POST' && parts[3] === 'events' && parts.length === 4) {
           if (!isInternalRequest(request)) return sendJson(response, 401, { error: 'Invalid tracker API key.' });
           const input = await readBody(request);
+          if (input.id) {
+            const previous = orders[index].events.find(event => event.id === input.id);
+            if (previous) {
+              if (previous.status !== input.status || (previous.message || '') !== (input.message || '')) return sendJson(response, 409, { error: 'Event ID already used with a different payload.' });
+              return sendJson(response, 200, { order: orders[index], tracker: customerView(orders[index]) });
+            }
+          }
           if (!allowedStatuses.has(input.status)) {
             return sendJson(response, 400, { error: `status must be one of: ${[...allowedStatuses].join(', ')}` });
           }
           const event = {
+            ...(input.id ? { id: input.id } : {}),
             status: input.status,
             occurredAt: input.occurredAt || new Date().toISOString(),
             ...(input.message ? { message: input.message } : {}),
@@ -214,6 +229,8 @@ export function createTrackerServer({ ordersFile = dataFile } = {}) {
     } catch (error) {
       return sendJson(response, 400, { error: error.message || 'Unexpected request error.' });
     }
+    });
+    pending = task.catch(() => {});
   });
 }
 

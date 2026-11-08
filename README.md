@@ -1,6 +1,10 @@
 # Airtel Order Tracker Service
 
+The shared FastAPI backend is documented in [backend/README.md](backend/README.md). The existing website and Android AI business partner screens now connect to the shared advisor pipeline. Run `npm run dev:stack` for the API, Tracker and WhatsApp simulator. The adapted plan is in [backend/PLAN.md](backend/PLAN.md).
+
 The website and Android UI prototype are documented in [FRONTEND.md](FRONTEND.md).
+
+The WhatsApp chat adapter and local voice/text/options preview are documented in [whatsapp/README.md](whatsapp/README.md). Start with `npm run whatsapp` and open `http://127.0.0.1:3002`.
 
 A small prototype service that owns the order-status timeline after checkout. The Advisor, checkout, KYC, and provisioning systems publish lifecycle events to it; the main app reads the resulting order or customer-safe Tracker view.
 

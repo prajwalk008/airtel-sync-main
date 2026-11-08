@@ -6,7 +6,11 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
-    "test": "node --test"
+    "test": "node --test",
+    "whatsapp": "node --env-file-if-exists=whatsapp/.env whatsapp/server.js",
+    "backend": "backend/.venv/Scripts/python.exe -m uvicorn backend.main:app --host 127.0.0.1 --port 8000",
+    "dev:stack": "node scripts/dev-stack.mjs",
+    "test:backend": "backend/.venv/Scripts/python.exe -m pytest backend/tests -q"
   },
   "engines": {
     "node": ">=22"
