@@ -1,5 +1,7 @@
 # Airtel Order Tracker Service
 
+The website and Android UI prototype are documented in [FRONTEND.md](FRONTEND.md).
+
 A small prototype service that owns the order-status timeline after checkout. The Advisor, checkout, KYC, and provisioning systems publish lifecycle events to it; the main app reads the resulting order or customer-safe Tracker view.
 
 ## Run
